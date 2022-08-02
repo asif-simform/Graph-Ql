@@ -28,6 +28,7 @@ main {
   margin: 0 auto;
   max-width: 40rem;
   padding: 1rem;
+  text-align:'center'
 }
 ol.gradient-list {
   counter-reset: gradient-counter;

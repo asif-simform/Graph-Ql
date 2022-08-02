@@ -12,10 +12,10 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  uuid: any;
-  timestamptz: any;
   Date: any;
   ObjectID: any;
+  timestamptz: any;
+  uuid: any;
 };
 
 export type Address = {
@@ -52,14 +52,6 @@ export type CapsulesFind = {
   status?: Maybe<Scalars['String']>;
   type?: Maybe<Scalars['String']>;
 };
-
-/** conflict action */
-export enum Conflict_Action {
-  /** ignore the insert on this row */
-  Ignore = 'ignore',
-  /** update the row with the given values */
-  Update = 'update'
-}
 
 export type Core = {
   __typename?: 'Core';
@@ -257,12 +249,6 @@ export type Launch = {
   ships?: Maybe<Array<Maybe<Ship>>>;
 };
 
-export type LaunchesPastResult = {
-  __typename?: 'LaunchesPastResult';
-  result?: Maybe<Result>;
-  data?: Maybe<Array<Maybe<Launch>>>;
-};
-
 export type LaunchFind = {
   apoapsis_km?: Maybe<Scalars['Float']>;
   block?: Maybe<Scalars['Int']>;
@@ -341,19 +327,6 @@ export type LaunchLinks = {
   wikipedia?: Maybe<Scalars['String']>;
 };
 
-export type Launchpad = {
-  __typename?: 'Launchpad';
-  attempted_launches?: Maybe<Scalars['Int']>;
-  details?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['ID']>;
-  location?: Maybe<Location>;
-  name?: Maybe<Scalars['String']>;
-  status?: Maybe<Scalars['String']>;
-  successful_launches?: Maybe<Scalars['Int']>;
-  vehicles_launched?: Maybe<Array<Maybe<Rocket>>>;
-  wikipedia?: Maybe<Scalars['String']>;
-};
-
 export type LaunchRocket = {
   __typename?: 'LaunchRocket';
   fairings?: Maybe<LaunchRocketFairings>;
@@ -407,6 +380,25 @@ export type LaunchSite = {
 export type LaunchTelemetry = {
   __typename?: 'LaunchTelemetry';
   flight_club?: Maybe<Scalars['String']>;
+};
+
+export type LaunchesPastResult = {
+  __typename?: 'LaunchesPastResult';
+  result?: Maybe<Result>;
+  data?: Maybe<Array<Maybe<Launch>>>;
+};
+
+export type Launchpad = {
+  __typename?: 'Launchpad';
+  attempted_launches?: Maybe<Scalars['Int']>;
+  details?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  location?: Maybe<Location>;
+  name?: Maybe<Scalars['String']>;
+  status?: Maybe<Scalars['String']>;
+  successful_launches?: Maybe<Scalars['Int']>;
+  vehicles_launched?: Maybe<Array<Maybe<Rocket>>>;
+  wikipedia?: Maybe<Scalars['String']>;
 };
 
 export type Link = {
@@ -482,22 +474,6 @@ export type MutationUpdate_UsersArgs = {
   where: Users_Bool_Exp;
 };
 
-
-/** column ordering options */
-export enum Order_By {
-  /** in the ascending order, nulls last */
-  Asc = 'asc',
-  /** in the ascending order, nulls first */
-  AscNullsFirst = 'asc_nulls_first',
-  /** in the ascending order, nulls last */
-  AscNullsLast = 'asc_nulls_last',
-  /** in the descending order, nulls first */
-  Desc = 'desc',
-  /** in the descending order, nulls first */
-  DescNullsFirst = 'desc_nulls_first',
-  /** in the descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
-}
 
 export type Payload = {
   __typename?: 'Payload';
@@ -1116,6 +1092,36 @@ export type SubscriptionUsers_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
+export type Volume = {
+  __typename?: 'Volume';
+  cubic_feet?: Maybe<Scalars['Int']>;
+  cubic_meters?: Maybe<Scalars['Int']>;
+};
+
+/** conflict action */
+export enum Conflict_Action {
+  /** ignore the insert on this row */
+  Ignore = 'ignore',
+  /** update the row with the given values */
+  Update = 'update'
+}
+
+/** column ordering options */
+export enum Order_By {
+  /** in the ascending order, nulls last */
+  Asc = 'asc',
+  /** in the ascending order, nulls first */
+  AscNullsFirst = 'asc_nulls_first',
+  /** in the ascending order, nulls last */
+  AscNullsLast = 'asc_nulls_last',
+  /** in the descending order, nulls first */
+  Desc = 'desc',
+  /** in the descending order, nulls first */
+  DescNullsFirst = 'desc_nulls_first',
+  /** in the descending order, nulls last */
+  DescNullsLast = 'desc_nulls_last'
+}
+
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
 export type Timestamptz_Comparison_Exp = {
@@ -1315,12 +1321,6 @@ export type Uuid_Comparison_Exp = {
   _lte?: Maybe<Scalars['uuid']>;
   _neq?: Maybe<Scalars['uuid']>;
   _nin?: Maybe<Array<Scalars['uuid']>>;
-};
-
-export type Volume = {
-  __typename?: 'Volume';
-  cubic_feet?: Maybe<Scalars['Int']>;
-  cubic_meters?: Maybe<Scalars['Int']>;
 };
 
 export type FetchShipsQueryVariables = Exact<{ [key: string]: never; }>;
