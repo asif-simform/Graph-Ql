@@ -19,7 +19,7 @@ const defaultInitialValues: IProps = {
 export const AddNewMovie: React.FC<any> = () => {
   // const [createFilmMutation, { loading, error }] = useCreateFilmMutation()
 
-  const onSubmit = values => {
+  const onSubmit = (values : IProps) => {
     // createFilmMutation({ variables: values })
   }
 

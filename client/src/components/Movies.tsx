@@ -3,7 +3,7 @@ import { IShips } from 'types'
 import { history, routes } from 'config/routes'
 
 type IProps = {
-  ships: IShips
+  ships: IShips | undefined
 }
 
 export const Movies: React.FC<IProps> = ({ ships }) => {
