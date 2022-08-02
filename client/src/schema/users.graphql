@@ -1,0 +1,17 @@
+query fetchShips {
+  ships(limit: 10) {
+    id
+    image
+    model
+    name
+  }
+}
+
+query fetchShip($id: ID) {
+  ships(find: { id: $id }) {
+    id
+    image
+    model
+    name
+  }
+}

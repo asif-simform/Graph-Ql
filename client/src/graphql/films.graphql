@@ -1,0 +1,32 @@
+# Write your query or mutation here
+
+query fetchFilms {
+  allFilms(orderBy: releaseDate_DESC) {
+    id
+    title
+    releaseDate
+    # isChecked @client
+  }
+}
+
+query fetchFilm($id: ID) {
+  Film(id: $id) {
+    id
+    title
+    releaseDate
+  }
+}
+
+mutation createFilm($title: String!, $episodeId: Int!) {
+  createFilm(title: $title, episodeId: $episodeId) {
+    id
+    title
+  }
+}
+
+mutation deleteFilm($id: ID!) {
+  deleteFilm(id: $id) {
+    id
+    title
+  }
+}

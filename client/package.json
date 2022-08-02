@@ -1,38 +1,79 @@
 {
-  "name": "client",
+  "name": "graphql-client-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.47",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4",
-    "workbox-background-sync": "^6.5.3",
-    "workbox-broadcast-update": "^6.5.3",
-    "workbox-cacheable-response": "^6.5.3",
-    "workbox-core": "^6.5.3",
-    "workbox-expiration": "^6.5.3",
-    "workbox-google-analytics": "^6.5.3",
-    "workbox-navigation-preload": "^6.5.3",
-    "workbox-precaching": "^6.5.3",
-    "workbox-range-requests": "^6.5.3",
-    "workbox-routing": "^6.5.3",
-    "workbox-strategies": "^6.5.3",
-    "workbox-streams": "^6.5.3"
+    "apollo-boost": "^0.4.7",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-error": "^1.1.12",
+    "formik": "^2.1.4",
+    "graphql": "^14.6.0",
+    "history": "^4.10.1",
+    "react-router-dom": "^5.1.2",
+    "react-use": "^13.24.0",
+    "yup": "^0.28.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.12.1",
+    "@graphql-codegen/typescript": "^1.12.1",
+    "@graphql-codegen/typescript-operations": "^1.12.1",
+    "@graphql-codegen/typescript-react-apollo": "^1.12.1",
+    "@types/concurrently": "^4.1.0",
+    "@types/history": "^4.7.5",
+    "@types/prettier": "^1.19.0",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/testing-library__jest-dom": "^5.0.1",
+    "@types/testing-library__react": "^9.1.2",
+    "@types/yup": "^0.26.30",
+    "concurrently": "^5.0.2",
+    "husky": ">=1",
+    "lint-staged": ">=8",
+    "prettier": "^1.19.1",
+    "typesync": "^0.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "typesync",
+    "start:with:codegen": "concurrently \"npm start\" \"yarn run generate:schema -- --watch\"",
+    "generate:schema": "graphql-codegen --require dotenv/config --config codegen.yml",
+    "prebuild": "yarn run generate:schema"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,json,md}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "browserslist": {
@@ -46,10 +87,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.7",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.4"
   }
 }
