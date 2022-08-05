@@ -2,6 +2,7 @@
   "name": "graphql-client-app",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://asif-simform.github.io/Graph-Ql/",
   "dependencies": {
     "@apollo/client": "^3.6.9",
     "@apollo/react-common": "^3.1.4",
